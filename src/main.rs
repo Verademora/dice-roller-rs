@@ -47,14 +47,6 @@ fn main() -> io::Result<()> {
 fn print_result(rolls: Vec<u32>, total: u32) {
     println!("=====================");
     println!("You rolled:");
-    // for (idx, n) in rolls.iter().enumerate() {
-    //     if (idx + 1) == rolls.len() {
-    //         print!("{}", n);
-    //     } else {
-    //         print!("{}, ", n);
-    //     }
-    // }
-    // io::stdout().flush().unwrap();
     println!("{:?}", rolls);
     println!();
     println!();
