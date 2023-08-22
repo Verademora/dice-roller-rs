@@ -1,5 +1,5 @@
-use std::io::{self, Write, Error, ErrorKind};
 use rand::Rng;
+use std::io::{self, Error, ErrorKind, Write};
 
 fn main() -> io::Result<()> {
     // Get user input
@@ -10,10 +10,7 @@ fn main() -> io::Result<()> {
     io::stdin().read_line(&mut buffer)?;
 
     // Split input assuming input is correct
-    let v: Vec<&str> = buffer
-        .trim()
-        .split(|c| c == 'd' || c == 'D')
-        .collect();
+    let v: Vec<&str> = buffer.trim().split(|c| c == 'd' || c == 'D').collect();
 
     // Check that we got 2 items from the split
     if v.len() != 2 {
@@ -22,9 +19,11 @@ fn main() -> io::Result<()> {
     }
 
     // Parse and roll dice
-    let qty: u32 = v[0].parse()
+    let qty: u32 = v[0]
+        .parse()
         .map_err(|_| Error::new(ErrorKind::InvalidInput, "Could not parse quantity"))?;
-    let sides: u32 = v[1].parse()
+    let sides: u32 = v[1]
+        .parse()
         .map_err(|_| Error::new(ErrorKind::InvalidInput, "Could not parse sides"))?;
 
     let mut rolls: Vec<u32> = Vec::new();
